@@ -2,7 +2,7 @@ import { LoginConfig } from "../config/formConfig";
 import ReusableInput from "../components/ReusableInput";
 import ReusableForm from "../components/ReusableForm";
 import { loginSchema } from "../config/authSchema";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
 
@@ -12,11 +12,10 @@ function Login() {
     const { email, password } = data;
     handleLogin(email, password);
   };
-  
+
   return (
     <ReusableForm onSubmit={onSubmit} title="Login" schema={loginSchema}>
-      {({ register, errors}) => {
-
+      {({ register, errors }) => {
         return (
           <>
             {LoginConfig.map((field) => {
@@ -40,7 +39,12 @@ function Login() {
                 </div>
               );
             })}
-            <p className="text-center p-2">Don't have an account? <a href="/signup" className="text-blue-500 hover:underline">Sign up</a></p>
+            <p className="text-center p-2">
+              Don't have an account?{" "}
+              <Link to="/signup" className="text-blue-500 hover:underline">
+                Sign up
+              </Link>
+            </p>
           </>
         );
       }}
