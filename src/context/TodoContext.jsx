@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, useContext } from "react";
-import { AuthContext } from "./AuthContext.jsx";
+import { AuthContext } from "./AuthContext";
 import { useLoadTodo } from "../hooks/useLoadTodo.js";
 
 export const TodoContext = createContext();

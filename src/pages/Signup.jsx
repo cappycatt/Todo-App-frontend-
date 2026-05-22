@@ -14,7 +14,12 @@ function Signup() {
   };
 
   return (
-    <ReusableForm title="Sign up" onSubmit={onSubmit} schema={signupSchema}>
+    <ReusableForm
+      title="Sign up"
+      onSubmit={onSubmit}
+      schema={signupSchema}
+      buttonText="Sign up"
+    >
       {({ register, errors, watch }) => {
         const passwordValue = watch("password");
         const hasUpperCase = passwordValue && /[A-Z]/.test(passwordValue);
@@ -30,9 +35,7 @@ function Signup() {
             {SignupConfig.map((field) => {
               return (
                 <div key={field.name}>
-                  <label  htmlFor={field.htmlFor}>
-                    {field.label}
-                  </label>
+                  <label htmlFor={field.htmlFor}>{field.label}</label>
                   <ReusableInput
                     {...register(field.name)}
                     type={field.type}

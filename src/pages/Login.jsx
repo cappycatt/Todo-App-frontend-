@@ -12,9 +12,15 @@ function Login() {
     const { email, password } = data;
     handleLogin(email, password);
   };
+  console.log("url:", import.meta.env.VITE_VITE_API_BASEURL);
 
   return (
-    <ReusableForm onSubmit={onSubmit} title="Login" schema={loginSchema}>
+    <ReusableForm
+      onSubmit={onSubmit}
+      title="Login"
+      schema={loginSchema}
+      buttonText="Login"
+    >
       {({ register, errors }) => {
         return (
           <>

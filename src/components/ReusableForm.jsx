@@ -3,7 +3,7 @@ import Btn from "../buttons/Btn";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-function ReusableForm({ children, onSubmit, title, schema }) {
+function ReusableForm({ children, onSubmit, title, schema, buttonText }) {
   const {
     register,
     watch,
@@ -15,10 +15,10 @@ function ReusableForm({ children, onSubmit, title, schema }) {
 
   return (
     <div className="flex flex-col justify-center items-center h-screen">
-    <div className="font-bold text-4xl p-4 text-emerald-800">{title}</div>
+      <div className="font-bold text-4xl p-4 text-emerald-800">{title}</div>
       <form
         onSubmit={handleSubmit(onSubmit, (err) => console.log(err))}
-        className="rounded-lg p-8 w-90 h-fit shadow-xl "
+        className="rounded-lg p-8 w-90 h-fit border border-gray-200 shadow-lg "
       >
         {children({ register, errors, watch })}
 
@@ -27,7 +27,7 @@ function ReusableForm({ children, onSubmit, title, schema }) {
             type="submit"
             className="bg-emerald-500 h-10 p-2 w-25 text-white rounded mt-2 hover:bg-emerald-600 shadow-sm hover:shadow-lg"
           >
-            Sign up
+            {buttonText || "Submit"}
           </button>
         </div>
       </form>

@@ -1,5 +1,9 @@
 import { createContext, useState, useEffect } from "react";
-import { createUser, deleteUser, loginValidation } from "../services/AuthServices.jsx";
+import {
+  createUser,
+  deleteUser,
+  loginValidation,
+} from "../services/AuthServices";
 import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
@@ -15,14 +19,14 @@ export function AuthProvider({ children }) {
     try {
       const tokens = await loginValidation(email, password);
       console.log(email, password);
-      localStorage.setItem('token', tokens.token);
-      localStorage.setItem('userId', tokens.userId);
-      navigate('/todo');
+      localStorage.setItem("token", tokens.token);
+      localStorage.setItem("userId", tokens.userId);
+      navigate("/todo");
     } catch (error) {
       console.error("Caught error:", error);
       setAuthError(error);
     }
-  }
+  };
   const handleCreateUser = async (email, password, name) => {
     try {
       setLoading(true);
@@ -30,10 +34,10 @@ export function AuthProvider({ children }) {
       const newUser = await createUser(email, password, name);
       if (newUser) {
         setUser(newUser);
-      } 
+      }
       localStorage.setItem("userId", newUser.userId);
       localStorage.setItem("token", newUser.token);
-      navigate('/todo');
+      navigate("/todo");
     } catch (error) {
       console.error("Caught error:", error);
       setAuthError(error);
