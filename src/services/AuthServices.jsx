@@ -27,7 +27,7 @@ export const deleteUser = async (id) => {
 
 export const loginValidation = async (email, password) => {
   try {
-    console.log(email, password)
+    console.log(email, password);
     const response = await axios.post(`${import.meta.env.API_BASEURL}/auth/login/`, {
       email,
       password,
